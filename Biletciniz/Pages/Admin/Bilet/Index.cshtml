@@ -1,0 +1,67 @@
+﻿@page
+@model Biletciniz.Pages.Admin.Bilet.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+    <div class="row" style="margin-top:15px;margin-bottom:15px">
+        <div class="col-md-10">
+          
+        </div>
+        <div class="col-md-2">
+          
+                <p>
+                    <a class="btn btn-danger" asp-page="Create">Bilet Oluştur</a>
+                </p>
+      
+        </div>
+    </div>
+<table  class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].Etkinlik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].KoltukNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].SatisTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].Fiyat) 
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bilet)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etkinlik.EtkinlikAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KoltukNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SatisTarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat) TL
+                </td>
+                <td>
+                    <a class="btn btn-danger" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a class="btn btn-info"  asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a  class="btn btn-secondary" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
